@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetAlert2</title>
+    <script src="https://www.unpkg.com/sweetalert2@11.15.0/dist/sweetalert2.all.min.js"></script>
+    <script>
+        function doclick3() {
+            Swal.fire({
+                title: "Title",
+                text: "執行成功",
+                icon: "success",
+                showConfirmButton: true,
+                showDenyButton: true,
+                showCancelButton: true,
+            }).then(function (result) {
+                console.log("result", result);
+                if (result.isConfirmed) {
+                    console.log("OK clicked");
+                } else if (result.isDenied) {
+                    console.log("No clicked");
+                } else if (result.isDismissed) {
+                    if (result.dismiss === "cancel") {
+                        console.log("Cancel clicked");
+                    } else {
+                        console.log("outside clicked");
+                    }
+                }
+            });
+        }
+
+        function doclick2() {
+            Swal.fire({
+                title: "Title",
+                text: "執行失敗",
+                icon: "error"
+            });
+        }
+        function doclick1() {
+            Swal.fire({
+                title: "Loading......",
+                text: "執行中別來煩我",
+                showConfirmButton: false,
+                allowOutsideClick: false
+            });
+
+            setTimeout(function () {
+                Swal.close();
+            }, 5000);
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="doclick1()">功能1</button>
+    <button onclick="doclick2()">功能2</button>
+    <button onclick="doclick3()">功能3</button>
+
+</body>
+
+</html>
